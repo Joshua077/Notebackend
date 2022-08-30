@@ -5,10 +5,11 @@ const mongoose = require("mongoose");
 const userRouter = require('./routes/userRoute');
 const { notFound, errorHandler } = require('./middleware/errorHandler');
 const NoteRouter = require('./routes/notesRoute');
+var cors = require('cors')
 require('dotenv').config();
 
 
-
+app.use(cors());
 app.use(express.json());
 
 
