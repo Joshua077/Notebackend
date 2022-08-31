@@ -36,11 +36,13 @@ const deleteNoteController = asyncHandler(async(req,res)=>{
 const updateNoteController = asyncHandler(async(req,res)=>{
     const {id} = req.params
     const { title, content, category } = req.body;
-    const note = await MernNote.findOne({id})
-    // if (note.user.toString() !== req.user._id.toString()) {
-    //     res.status(401);
-    //     throw new Error("You can't perform this action");
-    //   }
+
+    const note = await MernNote.findOne({_id:id});
+    
+    if (note.user.toString() !== req.user._id.toString()) {
+        res.status(401);
+        throw new Error("You can't perform this action");
+      }
       
     if (note) {
         note.title = title;
