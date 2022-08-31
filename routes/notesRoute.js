@@ -5,9 +5,12 @@ const NoteRouter = express.Router();
 // const verifyUser = require("../middleware/authMiddleWare")
 
 NoteRouter.get("/",verifyUser,getAllNotesController )
- NoteRouter.post("/create", verifyUser, createNotesController)
-NoteRouter.delete("/delete/:id", verifyUser, deleteNoteController)
-NoteRouter.put("/update/:id",verifyUser, updateNoteController)
+NoteRouter.get("/user", (req,res) =>{
+    res.send('hhhhh')
+})
+NoteRouter.post("/create", verifyUser, createNotesController)
+NoteRouter.delete("/single/delete/:id", verifyUser, deleteNoteController)
+NoteRouter.put("/single/update/:id",verifyUser, updateNoteController)
 NoteRouter.get("/single/:id", verifyUser, getNoteController)
 
 
